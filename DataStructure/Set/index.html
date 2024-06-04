@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const arr1 = [1, 2, 3]
+  const arr2 = [2, 3, 4]
+
+  const union = new Set([...arr1, ...arr2])
+
+  const set2 = new Set([...arr2])
+  const intersection = new Set(arr1.filter(item => set2.has(item)))
+
+  const differ = new Set(arr1.filter(item => !set2.has(item)))
+</script>
+
+</html>

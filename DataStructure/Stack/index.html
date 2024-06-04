@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./Stack.js"></script>
+<script>
+  const stack = new Stack()
+
+  // 使用stack结构作进制转换
+  function convert(DEC, base) {
+    let number = DEC
+    let target = ''
+    const baseString = '0123456789ABCDEF'
+
+    while (number > 0) {
+      stack.push(number % base)
+      number = Math.floor(number / base)
+    }
+
+    while (!stack.isEmpty()) {
+      target += baseString[stack.pop()]
+    }
+
+    return target
+  }
+</script>
+
+</html>

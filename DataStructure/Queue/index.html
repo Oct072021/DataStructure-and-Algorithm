@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./Queue.js"></script>
+<script>
+  // 使用Queue结构模拟 击鼓传花 游戏
+  function game(num, ...args) {
+    const queue = new Queue_2()
+    args.forEach(arg => {
+      queue.enqueue(arg)
+    })
+
+    const times = num > queue.size() ? num % queue.size() : num
+    for (i = 0; i < times; i++) {
+      queue.enqueue(queue.dequeue())
+    }
+
+    const looser = queue.dequeue()
+    console.log(looser, '淘汰了')
+    const newArgs = args.filter(arg => {
+      if (arg === looser) return false
+      return true
+    })
+
+    if (newArgs.length === 1) {
+      console.log(...newArgs, '获胜！');
+      return
+    }
+    game(7, ...newArgs)
+  }
+  
+  game(7, 'kerwin', 'xiaoming', 'tiechui', 'gangdaner', 'guludunzi')
+</script>
+
+</html>
